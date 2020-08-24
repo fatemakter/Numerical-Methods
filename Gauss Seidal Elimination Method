@@ -1,0 +1,24 @@
+a=[70 -20 -30 100;20 -70 30 150;-30 -30 90 0]
+e=0.001;
+n=length(a);
+m=0;
+x0=zeros(n-1,1);
+
+for k=1:15
+    fprintf('\n\n');
+for i=1:n-1
+    sum=0;
+    for j=1:n-1
+        if(i~=j)
+            sum=sum+a(i,j)*x0(j);
+        end
+    end
+    temp=(a(i,n)-sum)/a(i,i);
+    x0(i)=temp;
+    
+end
+
+end
+for i=1:n-1
+    fprintf("I %d  =  %d \n",i,x0(i))
+end
