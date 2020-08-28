@@ -1,0 +1,25 @@
+x0=-5;
+x1=10;
+f=@(x)(x^3-x-1);
+f0=f(x0);
+f1=f(x1);
+fprintf('                       i      x0      x1      x2 '); 
+for i=1:1:50
+    if(abs(f0-f1)<=0.001)
+        fprintf('Slope is too small\n');
+        break
+    end
+    x2=(x1*f0-x0*f1)/(f0-f1);
+    f2=f(x2);
+    if(abs(f2)<=0.001) 
+        fprintf('convergent solution   %d  %.3f  %.3f  %.3f  \n',i,x0,x1,x2);
+    end
+        f1=f0;
+        f0=f2;
+        x1=x0;
+        x0=x2;
+end
+  if(abs(f2)>=0.001) 
+      fprintf('does not convergent solution   %.3f  %.3f  %.3f  %.3f  \n',x0,x1,f0,f1);
+  end
+
