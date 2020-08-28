@@ -1,0 +1,22 @@
+x0=2;
+f=@(x)(x^3-x-1);
+df=@(x)(3*x^2-1);
+for i=1:1:50
+    f0=f(x0);
+    df0=df(x0);
+    if(abs(df0)<=0.0001)
+        fprintf('Slop is too small x0=%.3f   f0=%.3f   df0=%.3f  i=%.3f  \n',x0,f0,df0,i);
+        break
+    end
+    x1=x0-(f0/df0);
+    if(abs((x1-x0)/x1)<0.001)
+        fprintf('convergent solution  %d %.3f %.3f',i,x1,f(x1));
+        break;
+    end
+    x0=x1;
+end
+if(abs((x1-x0)/x1)>0.001)
+fprintf('Does not converge in n iterations  f0=%.3f   df0=%.3f   x0=%.3f   x1=%.3f',f0,df0,x0,x1);
+end
+
+        
