@@ -1,0 +1,21 @@
+x1=1;
+x2=2;
+e=0.1;
+h=x2-x1;
+f=@(x)(x*x+x+2);
+s1=(f(x1)+f(x2))/2;
+I1=h*s1;
+i=1;
+I0=0;
+while abs(I1-I0)<=e*abs(I1)
+    x=x1+h/2;
+    for j=1:i
+        s1=s1+f(x)
+        x=x+h;
+    end
+    i=2i;
+    h=h/2;
+    I0=I1;
+    I1=h*s1;
+end
+fprintf('%f  %f  %d',I1,h,i);
