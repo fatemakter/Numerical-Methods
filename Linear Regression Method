@@ -1,0 +1,20 @@
+n=5;
+sum_x=0;
+sum_xsq=0;
+sum_y=0;
+sum_xy=0;
+x=1;
+y=2;
+
+for i=1:n
+    x=x+1;
+    y=y+1;
+    sum_x=(sum_x)+x;
+    sum_xsq=(sum_xsq)+(x*x);
+    sum_y=(sum_y)+y;
+    sum_xy=(sum_xy)+(x*y);
+end
+denom=n*(sum_xsq)-(sum_x)*(sum_x);
+a0=((sum_y)*(sum_xsq)-(sum_x)*(sum_xy))/denom;
+a1=(n*(sum_xy)-(sum_x)*(sum_y))/denom;
+fprintf('%f  %f',a1,a0);
