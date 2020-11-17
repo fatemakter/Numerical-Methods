@@ -1,0 +1,21 @@
+%function dy/dx+xy=0, y(0)=1
+%from x=0 to x=0.25 using Polygon method
+x1=0;
+y1=1;
+h=0.05;
+xf=0.25;
+i=0;
+while x1<=xf
+
+ i=i+1;
+ fprintf('x %d = %d y %d= %d \n',i,x1,i,y1);
+
+ s1=-x1*y1;
+ yh=y1+s1*h/2;
+ s2=-(x1+h/2)*yh;
+ y2=y1+h*s2;
+ x1=x1+h;
+ y1=y2;
+
+
+end
