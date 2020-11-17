@@ -1,0 +1,29 @@
+%Gauss jordan elimination method:
+a=[70 -20 -30 100;20 -70 30 150;-30 -30 90 0]
+n=length(a);
+tol=10^(-6);
+for ii=1:(n-1)
+    for jj=ii+1:(n-1)
+        if(abs(a(jj,ii))>tol)
+        fac=a(ii,ii)/a(jj,ii);
+        a(jj,:)=fac*(a(jj,:))-a(ii,:);
+        end
+    end
+    
+end
+
+
+for ii=(n-1):(-1):2
+    for jj=(ii-1):(-1):1
+        if(abs(a(jj,ii))>tol)
+        fac=a(ii,ii)/a(jj,ii);
+        a(jj,:)=fac*(a(jj,:))-a(ii,:);
+        end
+    end
+    
+end
+x=zeros(n-1,1);
+for i=1:(n-1)
+    x=a(i,n)/a(i,i);
+    fprintf(' I %d = %d \n',i,x);
+end
